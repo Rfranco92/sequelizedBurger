@@ -1,0 +1,42 @@
+
+
+<h1>Make Your Burger, and then EAT IT</h1>
+
+<img src="/assets/img/the-triple-triple-burger.jpg" alt="burger">
+
+<h2>Burgers that are not eaten</h2>
+
+<ul>
+  {{#each burger}}
+    {{#unless this.devoured}}
+     
+       {{this.burger_name}}
+        <form method="POST" action="burgers/update/{{this.id}}?_method=PUT" >
+       <input type="hidden" name="devoured" value="true">
+       <button type="submit">Devour Burger</button>
+        </form>
+      
+
+    {{/unless}}
+  {{/each}}
+</ul>
+
+
+<h2>Burgers that are eaten</h2>
+
+<ul>
+  {{#each burger}}
+    {{#if this.devoured}}
+      
+      {{this.burger_name}},
+      
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Build a Burger</h2>
+  <form method="POST" action="burgers/create">
+    <label for="name">Burger Name:</label>
+    <input type="text" name="name">
+  <button type="submit">Build Burger</button>
+</form>
