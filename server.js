@@ -4,7 +4,7 @@ var methodOverride = require("method-override");
 var exphbs = require("express-handlebars");
 
 var app = express();
-var port = process.env.port || 3000;
+var PORT = process.env.PORT || 3000;
 // Serve static content for the app from the "public" directory in the application directory.
 
 var db = require("./models");
@@ -25,7 +25,7 @@ app.use(express.static("public"));
 require("./routes/burgers_controller.js")(app);
 
 db.sequelize.sync().then(function() {
-  app.listen(port, function() {
-    console.log("App listening on PORT " + port);
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
   });
 });
